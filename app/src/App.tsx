@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import dataApi from './api/data';
+import proxytest from './api/proxytest';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,13 +13,21 @@ function App() {
     console.log(res);
   };
 
+  const porxyClick = async () => {
+    const res = await proxytest.getdata();
+    console.log(res);
+  };
+
   return (
     <>
       <div>
         <div>テスト!!!できてるか？</div>
         <div>
           <button onClick={clickHandler}>
-            Clickしたらバックエンド（Kotlin）からデータ取ってくる
+            Clickしたらバックエンド（Kotlin）からデータ取ってくる.ローカルホスト叩く
+          </button>
+          <button onClick={porxyClick}>
+            proxy設定された、docker内の別コンテナ叩く
           </button>
         </div>
         <a href="https://vitejs.dev" target="_blank">
